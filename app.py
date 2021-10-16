@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
 def get_db_connection():
+    
+    
     conn = sqlite3.connect('database.db')
     conn.row_factory=sqlite3.Row
     return conn
@@ -17,7 +19,7 @@ def get_post(post_id):
     return post
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '1234567890'
+app.config['SECRET_KEY'] = '999888777666'
 
 
 @app.route('/')
