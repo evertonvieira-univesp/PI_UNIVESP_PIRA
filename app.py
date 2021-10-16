@@ -29,7 +29,7 @@ def index():
 
 @app.route('/testePI')
 def teste():
-    return render_template('')
+    return render_template('testePI.html')
 
 @app.route('/<int:post_id>')
 def post(post_id):
