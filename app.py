@@ -17,7 +17,7 @@ def get_post(post_id):
     return post
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '1234567890-=qwertyuiop'
+app.config['SECRET_KEY'] = '1234567890'
 
 
 @app.route('/')
