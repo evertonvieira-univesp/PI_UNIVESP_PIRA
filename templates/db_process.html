@@ -1,0 +1,33 @@
+
+	<style type="text/css">
+	table {font-family: arial, arial; border-collapse: collapse; width: 100%; border-radius: 5px; background-color: #f2f2f2;}
+	</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+       <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
+
+   <table>
+  <tr>
+    <th>Bairro</th>
+    <th>Localização</th>
+    <th>Incidências</th>
+  </tr>
+    {% for post in posts %}
+
+  <tr>
+    <td><a href="{{ url_for('post', post_id=post['id']) }}">
+            <d6>{{ post['title'] }}</d6>
+    </td>
+    <td><span class="badge badge-primary">{{ post['created'] }}</span></td>
+    <td><a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Editar</span>
+        </a></td>
+  </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}
+

@@ -3,8 +3,6 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
 def get_db_connection():
-    
-    
     conn = sqlite3.connect('database.db')
     conn.row_factory=sqlite3.Row
     return conn
@@ -25,9 +23,16 @@ app.config['SECRET_KEY'] = '999888777666'
 @app.route('/')
 def index():
     conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
+    p = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', posts=p)
+
+@app.route('/db')
+def db_process():
+    conn = get_db_connection()
+    sel_db = conn.execute('SELECT * FROM posts where title = 10').fetchall()
+    conn.close()
+    return render_template('db_process.html', posts=sel_db)
 
 @app.route('/testePI')
 def teste():
@@ -84,5 +89,5 @@ def delete(id):
     conn.execute('DELETE FROM posts WHERE id = ?', (id,))
     conn.commit()
     conn.close()
-    flash('"{}" was successfully deleted!'.format(post['title']))
+    flash('"{}" foi deletado com sucesso!'.format(post['title']))
     return redirect(url_for('index'))
