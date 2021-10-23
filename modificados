@@ -1,4 +1,12 @@
-        <textarea name="content" placeholder="Request"
+    <div class="form-group">
+        <label for="title">Tipo de contato</label>
+        <input type="text" name="title"
+               placeholder="Insira o contato com o carrapato" class="form-control"
+               value="{{ request.form['title'] }}"></input>
+    </div>
+
+
+      <textarea name="content" placeholder="Request"
                   class="form-control">{{ request.form['request'] }}</textarea>
 
 
@@ -16,3 +24,29 @@
       <option>5</option>
     </select>
   </div>
+
+edit.html
+    <div class="form-group">
+        <label for="title">Tipo de contato</label>
+        <input type="text" name="title" placeholder="Post title"
+               class="form-control"
+               value="{{ request.form['title'] or post['title'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="content">Bairro</label>
+        <textarea name="content" placeholder="Post content"
+                  class="form-control">{{ request.form['content'] or post['content'] }}</textarea>
+    </div>
+
+
+
+@app.route('/db')
+def db_process():
+    conn = get_db_connection()
+    sel_db = conn.execute('SELECT * FROM posts WHERE title= "Somente observação visual"').fetchall()
+    sel_db2 = conn.execute('SELECT * FROM posts WHERE title= "Carrapato hospedado em animais"').fetchall()
+    sel_db3 = conn.execute('SELECT * FROM posts WHERE title= "Carrapato hospedado em humanos"').fetchall()
+    conn.close()
+
+    return render_template('db_process.html', posts=sel_db)

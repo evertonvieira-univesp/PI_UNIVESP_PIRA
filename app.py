@@ -29,12 +29,14 @@ def index():
     conn.close()
     return render_template('index.html', posts=p)
 
+
 @app.route('/db')
 def db_process():
     conn = get_db_connection()
-    sel_db = conn.execute('SELECT * FROM posts where title = 10').fetchall()
+    sel_db = conn.execute('SELECT * FROM posts GROUP BY (content) ').fetchall()
     conn.close()
-    return render_template('db_process.html', posts=sel_db)
+    return render_template('db_process.html', posts = sel_db)
+
 
 @app.route('/testePI')
 def teste():
@@ -51,8 +53,9 @@ def create():
         title = request.form['title']
         content = request.form['content']
 
-        if not title:
-            flash('Title is required!')
+        if not title or not content:
+            flash('Por favor preencha os campos!')
+
         else:
             conn = get_db_connection()
             conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
@@ -70,8 +73,8 @@ def edit(id):
         title = request.form['title']
         content = request.form['content']
 
-        if not title:
-            flash('Title is required!')
+        if not title or not content:
+            flash('Por favor preencha os campos para editar!')
         else:
             conn = get_db_connection()
             conn.execute('UPDATE posts SET title = ?, content = ?'
