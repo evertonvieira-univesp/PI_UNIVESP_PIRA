@@ -29,17 +29,12 @@ def index():
     conn.close()
     return render_template('index.html', posts=p)
 
-
 @app.route('/db')
 def db_process():
     conn = get_db_connection()
-    sel_db = conn.execute('SELECT count(*) FROM posts WHERE content.distinct ').fetchall()
-
+    sl_db = conn.execute('SELECT count(*) FROM posts WHERE content = "Centro" ').fetchall()
     conn.close()
-
-
-    return render_template('db_process.html', posts = sel_db)
-
+    return render_template('db_process.html', posts=sl_db)
 
 @app.route('/testePI')
 def teste():

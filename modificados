@@ -58,3 +58,13 @@ def db_process():
     <td><a href="{{ url_for('post', post_id=post['id']) }}">
             <d6>{{ post['content'] }}</d6>
         </td>
+
+
+
+        <table>
+  <tr>
+    <th>Tipo contato</th>
+    <th>Bairro</th>
+    <th>Incidências</th>
+  </tr>
+    {% for post in posts %}
