@@ -33,14 +33,21 @@ def index():
 @app.route('/db')
 def db_process():
     conn = get_db_connection()
-    sel_db = conn.execute('SELECT * FROM posts GROUP BY (content) ').fetchall()
+    sel_db = conn.execute('SELECT count(*) FROM posts WHERE content.distinct ').fetchall()
+
     conn.close()
+
+
     return render_template('db_process.html', posts = sel_db)
 
 
 @app.route('/testePI')
 def teste():
     return render_template('testePI.html')
+
+@app.route('/sobre')
+def sobreNos():
+    return render_template('sobre.html')
 
 @app.route('/<int:post_id>')
 def post(post_id):
