@@ -1,9 +1,6 @@
 import sqlite3
-
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-
-
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -29,12 +26,13 @@ def index():
     conn.close()
     return render_template('index.html', posts=p)
 
+
 @app.route('/db')
 def db_process():
     conn = get_db_connection()
-    sl_db = conn.execute('SELECT count(*) FROM posts WHERE content = "Centro" ').fetchall()
+    sl_db = conn.execute ('SELECT * FROM Resultados').fetchall()
     conn.close()
-    return render_template('db_process.html', posts=sl_db)
+    return render_template ('db_process.html', Resultados=sl_db)
 
 @app.route('/testePI')
 def teste():

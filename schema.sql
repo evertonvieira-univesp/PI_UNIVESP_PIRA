@@ -7,3 +7,7 @@ CREATE TABLE posts (
     title TEXT NOT NULL,
     content TEXT NOT NULL
 );
+
+ SELECT distinct content from posts
+
+SELECT content AS Bairros, count(*) AS Ocorrências FROM posts group by (content)
