@@ -8,29 +8,12 @@
 {% block content %}
        <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
 
-   <table>
-  <tr>
-    <th>Tipo contato</th>
-    <th>Bairro</th>
-    <th>Incidências</th>
-  </tr>
-    {% for post in posts %}
+    <a href="{{ url_for('db_process')}}">
 
-  <tr>
-    <td><d6>{{ post['title'] }}</d6>
-        </td>
+        </a>
+        <d6>{{ Resultados.Bairros }}</d6>
+        <hr>
 
-    <td><a href="{{ url_for('post', post_id=post['id']) }}">
-            <d6>{{ post['content'] }}</d6>
-        </td>
-
-    <td><a href="{{ url_for('edit', id=post['id']) }}">
-            <span class="badge badge-warning">Editar</span>
-        </a></td>
-
-  </tr>
-{% endfor %}
-</table>
 
 
 {% endblock %}
