@@ -9,15 +9,29 @@
 {% block content %}
        <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
 
+       <table>
+  <tr>
+    <th>Bairros</th>
+    <th>Ocorrências</th>
+  </tr>
+
     {% for Res in Resultados %}
-        <a href="{{ url_for('db_process') }}">
+
+        <tr>
+
+    <td><a href="{{ url_for('db_process') }}">
             <d6>{{ Res['Bairros'] }}</d6>
         </a>
-        <d6>{{ Res['Ocorrências'] }}</d6>
+
+    <td><d6>{{ Res['Ocorrências'] }}</d6>
         <span class="badge badge-primary">{{ Res['created'] }}</span>
+        </td>
+
+  </tr>
 
 
-        <hr>
+
+
     {% endfor %}
 
 

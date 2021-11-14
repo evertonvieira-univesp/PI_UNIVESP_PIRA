@@ -104,3 +104,18 @@ db_process
 
 
 {% endblock %}
+
+
+
+
+
+
+
+        <a href="{{ url_for('db_process') }}">
+            <d6>{{ Res['Bairros'] }}</d6>
+        </a>
+        <d6>{{ Res['Ocorrências'] }}</d6>
+        <span class="badge badge-primary">{{ Res['created'] }}</span>
+
+
+        <hr>
