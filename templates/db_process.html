@@ -1,6 +1,7 @@
 
 	<style type="text/css">
-	table {font-family: arial, arial; border-collapse: collapse; width: 100%; border-radius: 5px; background-color: #f2f2f2;}
+	table {font-family: arial, arial; border-collapse: collapse;
+        width: 100%; border-radius: 5px; background-color: #f2f2f2;}
 	</style>
 
 {% extends 'base.html' %}
@@ -8,15 +9,18 @@
 {% block content %}
        <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
 
-    <a href="{{ url_for('db_process')}}">
-
+    {% for Res in Resultados %}
+        <a href="{{ url_for('db_process') }}">
+            <d6>{{ Res['Bairros'] }}</d6>
         </a>
-        <d6>{{ Resultados.Bairros }}</d6>
-        <hr>
+        <d6>{{ Res['Ocorrências'] }}</d6>
+        <span class="badge badge-primary">{{ Res['created'] }}</span>
 
+
+        <hr>
+    {% endfor %}
 
 
 {% endblock %}
-
 
 

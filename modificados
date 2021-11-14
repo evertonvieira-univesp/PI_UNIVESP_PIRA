@@ -82,3 +82,25 @@ INDEX
 
 
 {% endblock %}
+
+
+
+db_process
+
+	<style type="text/css">
+	table {font-family: arial, arial; border-collapse: collapse; width: 100%; border-radius: 5px; background-color: #f2f2f2;}
+	</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+       <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
+
+    <a href="{{ url_for('db_process')}}">
+
+        </a>
+        <d6>{{ Resultados.Bairros }}</d6>
+        <hr>
+
+
+{% endblock %}

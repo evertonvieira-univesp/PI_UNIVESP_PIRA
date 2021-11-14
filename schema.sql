@@ -8,6 +8,7 @@ CREATE TABLE posts (
     content TEXT NOT NULL
 );
 
+drop view if exists Resultados;
 
-
-SELECT content AS Bairros, count(*) AS Ocorrências FROM posts group by (content)
+CREATE VIEW Resultados as
+SELECT content AS Bairros, count(*) AS Ocorrências FROM posts group by (content);

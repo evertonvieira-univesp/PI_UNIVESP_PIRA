@@ -2,6 +2,7 @@
 
 {% block content %}
        <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
+
     {% for post in posts %}
         <a href="{{ url_for('post', post_id=post['id']) }}">
             <d6>{{ post['title'] }}</d6>
