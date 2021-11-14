@@ -2,6 +2,22 @@ body{
     background-image: url('C:/Users/eviei/Desktop/GIT_Exemplo/flask_blog_PI_UNIVESP/img/fundocontador.jpg');
 }
 
+
+p {
+  margin: 0;
+  text-indent: 3ch;
+  color: darkred;
+}
+
+p.caldeirao {
+   text-indent: 0;
+   display: inline;
+}
+p.caldeirao + p.caldeirao::before {
+  content: " ¶ ";
+}
+
+
 h1 {
     border: 2px #2c439f solid;
     color: #2d7abd;

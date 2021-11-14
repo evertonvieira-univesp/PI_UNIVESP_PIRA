@@ -61,10 +61,24 @@ def db_process():
 
 
 
-        <table>
-  <tr>
-    <th>Tipo contato</th>
-    <th>Bairro</th>
-    <th>Incidências</th>
-  </tr>
+INDEX
+{% extends 'base.html' %}
+
+{% block content %}
+       <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
     {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post['id']) }}">
+            <d6>{{ post['title'] }}</d6>
+        </a>
+        <d6>{{ post['content'] }}</d6>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+
+         <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Editar</span>
+        </a>
+
+        <hr>
+    {% endfor %}
+
+
+{% endblock %}

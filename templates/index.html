@@ -9,9 +9,7 @@
         <d6>{{ post['content'] }}</d6>
         <span class="badge badge-primary">{{ post['created'] }}</span>
 
-         <a href="{{ url_for('edit', id=post['id']) }}">
-            <span class="badge badge-warning">Editar</span>
-        </a>
+
         <hr>
     {% endfor %}
 

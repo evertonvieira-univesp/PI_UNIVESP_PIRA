@@ -42,6 +42,10 @@ def teste():
 def sobreNos():
     return render_template('sobre.html')
 
+@app.route('/aprofundando')
+def aprofundando():
+    return render_template('aprofundando.html')
+
 @app.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
