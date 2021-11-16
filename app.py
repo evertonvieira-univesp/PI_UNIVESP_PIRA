@@ -34,22 +34,22 @@ def db_process():
     conn.close()
     return render_template ('db_process.html', Resultados=sl_db)
 
-@app.route('/testePI')
-def teste():
-    return render_template('testePI.html')
 
 @app.route('/sobre')
 def sobreNos():
     return render_template('sobre.html')
 
+
 @app.route('/aprofundando')
 def aprofundando():
     return render_template('aprofundando.html')
+
 
 @app.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
     return render_template('post.html', post=post)
+
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
@@ -68,6 +68,7 @@ def create():
             conn.close()
             return redirect(url_for('index'))
     return render_template('create.html')
+
 
 @app.route('/<int:id>/edit', methods=('GET', 'POST'))
 def edit(id):

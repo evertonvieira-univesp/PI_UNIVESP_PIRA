@@ -1,7 +1,8 @@
 
 	<style type="text/css">
-	table {font-family: arial, arial; border-collapse: collapse;
-        width: 100%; border-radius: 5px; background-color: #f2f2f2;}
+	table {font-family: Calibri, Calibri; border-collapse: separate;
+        width: auto; border-radius: 10px; padding: 10px; alignment: center ; align-content: center; align-items: center;
+        background-color: rgba(187, 236, 230, 0.62); align-self: center; alignment-baseline: center; text-align-all: center}
 	</style>
 
 {% extends 'base.html' %}
@@ -9,7 +10,10 @@
 {% block content %}
        <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
 
+<p>Abaixo são exibidos os dados de relatos de avistamento de carrapatos ordenados por bairros:</p>
+
        <table>
+    <table class="table table-striped">
   <tr>
     <th>Bairros</th>
     <th>Ocorrências</th>
