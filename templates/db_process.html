@@ -1,44 +1,18 @@
-
-	<style type="text/css">
-	table {font-family: Calibri, Calibri; border-collapse: separate;
-        width: auto; border-radius: 10px; padding: 10px; alignment: center ; align-content: center; align-items: center;
-        background-color: rgba(187, 236, 230, 0.62); align-self: center; alignment-baseline: center; text-align-all: center}
-	</style>
-
 {% extends 'base.html' %}
 
 {% block content %}
-       <h2>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h2>
+       <h5>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h5>
 
-<p>Abaixo são exibidos os dados de relatos de avistamento de carrapatos ordenados por bairros:</p>
-
-       <table>
-    <table class="table table-striped">
-  <tr>
-    <th>Bairros</th>
-    <th>Ocorrências</th>
-  </tr>
-
-    {% for Res in Resultados %}
-
-        <tr>
-
-    <td><a href="{{ url_for('db_process') }}">
-            <d6>{{ Res['Bairros'] }}</d6>
+  {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post['id']) }}">
+            <d6>{{ post['title'] }}</d6>
         </a>
-
-    <td><d6>{{ Res['Ocorrências'] }}</d6>
-        <span class="badge badge-primary">{{ Res['created'] }}</span>
-        </td>
-
-  </tr>
+        <d6>{{ post['content'] }}</d6>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
 
 
-
-
+        <hr>
     {% endfor %}
 
 
 {% endblock %}
-
-

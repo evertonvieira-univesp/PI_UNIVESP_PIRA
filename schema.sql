@@ -11,4 +11,4 @@ CREATE TABLE posts (
 drop view if exists Resultados;
 
 CREATE VIEW Resultados as
-SELECT content AS Bairros, count(*) AS Ocorrências FROM posts group by (content);
+SELECT content AS Bairros, count(*) AS Ocorrências FROM posts group by (content) ORDER BY Ocorrências DESC;

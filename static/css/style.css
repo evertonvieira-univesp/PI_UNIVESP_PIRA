@@ -32,3 +32,6 @@ h10 {
     padding: 10px;
 }
 
+table {font-family: Calibri, Calibri; border-collapse: separate;
+        width: 100px ;  border-radius: 10px; padding: 10px; alignment: center ; align-content: center; align-items: center;
+        background-color: rgba(187, 236, 230, 0,2); align-self: center; text-align-all: center }
