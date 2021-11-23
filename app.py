@@ -30,9 +30,10 @@ def index():
 @app.route('/db')
 def db_process():
     conn = get_db_connection()
-    p = conn.execute('SELECT * FROM posts').fetchall()
+    sl_db2 = conn.execute('SELECT * FROM contato').fetchall()
     conn.close()
-    return render_template ('db_process.html', posts=p)
+    return render_template('db_process.html', contato=sl_db2)
+
 
 @app.route('/sobre')
 def sobreNos():

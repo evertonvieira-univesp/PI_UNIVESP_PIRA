@@ -3,16 +3,27 @@
 {% block content %}
        <h5>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h5>
 
-  {% for post in posts %}
-        <a href="{{ url_for('post', post_id=post['id']) }}">
-            <d6>{{ post['title'] }}</d6>
+ <table>
+
+    <table class="table table-striped">
+  <tr>
+    <th>Tipo de Contato</th>
+    <th>Ocorrências</th>
+  </tr>
+
+    {% for Con in contato %}
+
+        <tr>
+    <td><a href="{{ url_for('db_process') }}">
+            <d6>{{ Con['CONTATO'] }}</d6>
         </a>
-        <d6>{{ post['content'] }}</d6>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <td><d6>{{ Con['QUANTIDADE'] }}</d6>
+        </td>
 
+  </tr>
 
-        <hr>
     {% endfor %}
+
 
 
 {% endblock %}
