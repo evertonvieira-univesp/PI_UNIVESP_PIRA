@@ -25,6 +25,14 @@ h1 {
     padding: 10px;
 }
 
+p3 {
+    margin: 2px;
+    text-indent: 3ch;
+    text-align: left;
+    color: #3a2525;
+}
+}
+
 h10 {
     border: 1px #2c439f solid;
     color: blue;

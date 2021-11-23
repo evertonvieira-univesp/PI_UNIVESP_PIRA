@@ -18,13 +18,13 @@ def get_post(post_id):
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '999888777666'
 
-
 @app.route('/')
 def index():
     conn = get_db_connection()
     sl_db = conn.execute ('SELECT * FROM Resultados').fetchall()
     conn.close()
     return render_template('index.html', Resultados=sl_db)
+
 
 
 @app.route('/db')
