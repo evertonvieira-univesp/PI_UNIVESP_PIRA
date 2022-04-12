@@ -34,6 +34,13 @@ def db_process():
     conn.close()
     return render_template('db_process.html', contato=sl_db2)
 
+@app.route('/ftr')
+def filter():
+    conn = get_db_connection()
+    sl_db3 = conn.execute('SELECT * FROM Res_filtro').fetchall()
+    conn.close()
+    return render_template('filter.html', Res_filtro=sl_db3)
+
 
 @app.route('/sobre')
 def sobreNos():

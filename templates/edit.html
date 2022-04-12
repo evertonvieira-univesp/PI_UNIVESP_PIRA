@@ -6,7 +6,8 @@
 <form method="post">
 
 <div>
-    <label for="Tipo contato">Qual foi seu contato com o hospedeiro?</label>
+      <select type="select" name="title" class="form-control" placeholder="Post title"
+            value="{{ request.form['title'] or post['title'] }}">  <label for="Tipo contato">Qual foi seu contato com o hospedeiro?</label>
     <select type="select" name="title" class="form-control" placeholder="Post title"
             value="{{ request.form['title'] or post['title'] }}">
       <option></option>
