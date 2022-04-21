@@ -1,20 +1,27 @@
-import sqlite3
+import os
+import psycopg2
 
-connection = sqlite3.connect('database.db')
+conn = psycopg2.connect(
+        host="LOCALHOST",
+        database="PI UNIVESP 2022",
+        user='admin',
+        password=os.environ['123'])
 
+# Open a cursor to perform database operations
+cur = conn.cursor()
 
-with open('schema.sql') as f:
-    connection.executescript(f.read())
+# Execute a command: this creates a new table
+cur.execute('DROP TABLE IF EXISTS posts')
+cur.execute('CREATE TABLE posts (id INTEGER PRIMARY KEY,'
+                                 'created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,'
+                                 'title TEXT NOT NULL,'
+                                 'content TEXT NOT NULL);'
+                                 )
+cur.execute('drop view if exists Resultados')
+cur.execute(
+    'CREATE VIEW Resultados as SELECT bairro AS Bairros, count(*) AS Ocorrências FROM posts group by (bairro) ORDER BY Ocorrências DESC;');
 
-cur = connection.cursor()
+conn.commit()
 
-cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            ('First Post', 'Content for the first post')
-            )
-
-cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            ('Second Post', 'Content for the second post')
-            )
-
-connection.commit()
-connection.close()
+cur.close()
+conn.close()

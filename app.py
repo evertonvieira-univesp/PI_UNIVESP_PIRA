@@ -1,38 +1,47 @@
-import sqlite3
+import os
+import psycopg2
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '999888777666'
+
+
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory=sqlite3.Row
+    conn = psycopg2.connect(host='localhost',
+                            database='PIUNIVESP2022',
+                            user='admin',
+                            password='123')
     return conn
+
 
 def get_post(post_id):
     conn = get_db_connection()
-    post = conn.execute('SELECT * FROM posts WHERE id = ?',(post_id,)).fetchone()
+    with conn:
+        with conn.cursor() as curs:
+            curs.execute('SELECT * FROM "PIUNIVESP2022.public.posts" WHERE post_id = id').fetchone()
     conn.close()
     if post is None:
         abort(404)
     return post
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '999888777666'
 
 @app.route('/')
 def index():
     conn = get_db_connection()
-    sl_db = conn.execute ('SELECT * FROM Resultados').fetchall()
-    conn.close()
-    return render_template('index.html', Resultados=sl_db)
-
+    with conn:
+        with conn.cursor() as curs:
+            curs.execute('SELECT * FROM "resultados"')
+    return render_template('index.html', Resultados=curs)
 
 
 @app.route('/db')
 def db_process():
     conn = get_db_connection()
-    sl_db2 = conn.execute('SELECT * FROM contato').fetchall()
+    sl_db2 = conn.execute('SELECT * FROM "PIUNIVESP2022.public.posts.contato"').fetchall()
     conn.close()
     return render_template('db_process.html', contato=sl_db2)
+
 
 @app.route('/ftr')
 def filter():
@@ -52,29 +61,7 @@ def aprofundando():
     return render_template('aprofundando.html')
 
 
-@app.route('/<int:post_id>')
-def post(post_id):
+@app.route('/<int:id>')
+def post(id):
     post = get_post(post_id)
     return render_template('post.html', post=post)
-
-
-@app.route('/create', methods=('GET', 'POST'))
-def create():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-
-        if not title or not content:
-            flash('Por favor preencha os campos!')
-
-        else:
-            conn = get_db_connection()
-            conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
-                         (title, content))
-            conn.commit()
-            conn.close()
-            return redirect(url_for('index'))
-    return render_template('create.html')
-
-
-
