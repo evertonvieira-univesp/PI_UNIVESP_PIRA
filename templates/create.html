@@ -7,7 +7,7 @@
 
      <div class="form-group">
     <label for="Tipo contato">Qual foi seu contato com o hospedeiro?</label>
-    <select name="title" class="form-control" value="{{ request.form['title'] }}">
+    <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
         <option></option>
       <option>Somente observação visual</option>
       <option>Carrapato hospedado em animais</option>
@@ -18,7 +18,7 @@
 
     <div class="form-group">
     <label for="Bairro">Selecione o bairro</label>
-    <select name="content" class="form-control" value="{{ request.form['content'] }}">
+    <select name="bairro" class="form-control" value="{{ request.form.get('bairro') }}">
         <option></option>
 <option>Água Branca</option>
 <option>Água Santa</option>
