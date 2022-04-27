@@ -7,10 +7,10 @@ from werkzeug.exceptions import abort
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
+#Configuração de conexão PostgreSQL
 engine = create_engine("postgresql://admin:123@localhost:5432/PIUNIVESP2022")
 db = scoped_session(sessionmaker(bind=engine))
-
-app.secret_key = '12345678'#Configure session to use filesystem
+app.secret_key = '12345678'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 
@@ -21,7 +21,7 @@ def get_db_connection():
                             password='123')
     return conn
 
-
+#Função para encontrar ID de postagens individuais
 def get_post(post_id):
     conn = get_db_connection()
     with conn:
@@ -33,44 +33,33 @@ def get_post(post_id):
     return post
 
 
+#Página inicial
 @app.route('/')
 def index():
-    exibe = db.execute ('SELECT * FROM resultados')
-
-    return render_template('index.html', Resultados=exibe)
-
-
-@app.route('/db')
-def db_process():
-    conn = get_db_connection()
-    sl_db2 = db.execute('SELECT * FROM "PIUNIVESP2022.public.posts.contato"').fetchall()
-    conn.close()
-    return render_template('db_process.html', contato=sl_db2)
+    exibe = db.execute('SELECT * FROM retornos').fetchall()
+    return render_template('index.html', Res=exibe)
 
 
-@app.route('/ftr')
-def filter():
-    conn = get_db_connection()
-    sl_db3 = conn.execute('SELECT * FROM Res_filtro').fetchall()
-    conn.close()
-    return render_template('filter.html', Res_filtro=sl_db3)
-
-
+#Página de informação do grupo
 @app.route('/sobre')
 def sobreNos():
     return render_template('sobre.html')
 
 
+#Página de aprofundamento do tema
 @app.route('/aprofundando')
 def aprofundando():
     return render_template('aprofundando.html')
 
 
+#Retorno individual de postagens
 @app.route('/<int:id>')
-def post(id):
-    post = get_post(post_id)
+def post():
+    post = get_post()
     return render_template('post.html', post=post)
 
+
+#Criação de postagens
 @app.route('/create', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':

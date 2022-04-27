@@ -17,40 +17,29 @@
 <a href="/ftr" class="btn btn-primary btn-lg active"  role=/create.html aria-pressed="true">Filtro de ocorrências</a>
 
 
-{% endblock %}- \n -\n \n-
 
-<p> </p>
 
-{% block content2 %}
-<p> </p>
-
-<p> </p>
 
 <p>Abaixo são exibidos os dados de relatos de ocorrências de carrapatos ordenados por bairros:</p>
 
 <p> </p>
 
-    <table>
-
-    <table class="table table-striped">
+   <table class="table table-striped">
   <tr>
-    <th>Bairros</th>
-    <th>Ocorrências</th>
-  </tr>
+        <th scope="col">Bairros</th>
+        <th scope="col">Total de ocorrências</th>
 
-    {% for Res in Resultados %}
+    </tr>
+  </thead>
+	{% for res in Res %}
+	<tr>
+	<td>{{res.bairros}}
+	</td>
+	<td>{{res.ocorrências}}
+	</td>
 
-        <tr>
-    <td><a href="{{ url_for('index') }}">
-            <d6>{{ Res['Bairros'] }}</d6>
-        </a>
-        <td><d6>{{ Res['Ocorrências'] }}</d6>
-        <span class="badge badge-primary">{{ Res['created'] }}</span>
-        </td>
-
-  </tr>
-
-    {% endfor %}
+	{% endfor %}
+</table>
 
 {% endblock %}
 
