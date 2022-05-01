@@ -40,6 +40,13 @@ def index():
     return render_template('index.html', Res=exibe)
 
 
+#Página tipos de contato
+@app.route('/db')
+def tipo():
+    exibe = db.execute('SELECT * FROM tipos').fetchall()
+    return render_template('db.html', tipos=exibe)
+
+
 #Página de informação do grupo
 @app.route('/sobre')
 def sobreNos():

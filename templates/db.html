@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+       <h5>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h5>
+
+<p3>Este projeto foi desenvolvido para realizar um levantamento da ocorrência de contatos com carrapatos na
+    cidade de Piracicaba-SP. A ferramenta estará disponível para participação entre os meses de Novembro e Dezembro de 2021.</p3>
+
+<p> </p>
+<p> </p>
+
+
+<p>Abaixo são exibidos os dados de relatos de ocorrências de carrapatos ordenados por tipo de contato:</p>
+
+<p> </p>
+
+   <table class="table table-striped">
+  <tr>
+        <th scope="col">Tipo de contato</th>
+        <th scope="col">Total de ocorrências</th>
+
+    </tr>
+  </thead>
+	{% for tipo in tipos %}
+	<tr>
+	<td>{{tipo.tipo}}
+	</td>
+	<td>{{tipo.quantidade}}
+	</td>
+
+	{% endfor %}
+</table>
+
+{% endblock %}
+
