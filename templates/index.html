@@ -22,6 +22,19 @@
 
 <p>Abaixo são exibidos os dados de relatos de ocorrências de carrapatos ordenados por bairros:</p>
 
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filtro por data
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Últimos 30 dias</a>
+    <a class="dropdown-item" href="#">Últimos 6 meses</a>
+    <a class="dropdown-item" href="#">Últimos 12 meses</a>
+    <div class="dropdown-divider"></div>
+
+  </div>
+</div>
+
 <p> </p>
 
    <table class="table table-striped">
@@ -41,5 +54,24 @@
 	{% endfor %}
 </table>
 
+    <body>
+    <div id='map' style='width: 500px; height: 400px;'></div>
+<script>
+ mapboxgl.accessToken = 'pk.eyJ1IjoicG9uY2VnaCIsImEiOiJjbDJvMWhncm4wMW04M2NtajdscHlib285In0.UfM2xByqa_5RqYcTEVcOhQ';
+const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    center: [-47.65, -22.72] , // starting position [lng, lat]
+    zoom: 11 // starting zoom
+});
+
+
+</script>
+    </body>
+
+<p></p>
+
+
 {% endblock %}
+
 

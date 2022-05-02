@@ -2,6 +2,9 @@ body{
     background-image: url('C:/Users/eviei/Desktop/GIT_Exemplo/flask_blog_PI_UNIVESP/img/fundocontador.jpg');
 }
 
+#map { height: 180px; }
+
+map { height: 180px; }
 
 p {
   margin: 0;
