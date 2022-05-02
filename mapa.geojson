@@ -1,0 +1,25 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Carrapato em animais",
+        "description": ""
+      },
+      "geometry": {
+        "coordinates": [-47.60, -22.76],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Carrapato em humanos",
+        "description": ""
+      },
+      "geometry": {
+        "coordinates": [-47.68, -22.70],
+        "type": "Point"
+      }
+    }
+}
