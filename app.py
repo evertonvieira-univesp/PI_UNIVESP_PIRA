@@ -66,7 +66,8 @@ def create():
     if request.method == 'POST':
         contato = request.form.get('contato')
         bairro = request.form.get('bairro')
-        db.execute("INSERT INTO posts (contato, bairro) VALUES (:contato, :bairro)" , {"contato": contato, "bairro": bairro})
+        geo = request.form.get('geo')
+        db.execute("INSERT INTO posts (contato, bairro,geo) VALUES (:contato, :bairro, :geo)" , {"contato": contato, "bairro": bairro, "geo": geo})
         db.commit()
 
         return redirect(url_for('index'))

@@ -3,9 +3,45 @@
 {% block content %}
 <h4>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h4>
 
-<form method="post">
+<script>
+    function geoFindMe() {
+    var output = document.getElementById("out");
 
-     <div class="form-group">
+    if (!navigator.geolocation){
+        output.innerHTML = "<p>Geolocalização não aceita pelo browser</p>";
+        return;
+    }
+
+     function success(position) {
+         var loc  = position.coords.latitude + ',' + position.coords.longitude;
+    document.getElementById("geo").value =  loc ;
+    }
+    function error() {
+        output.innerHTML = "Não foi possível carregar a localização.";
+    }
+
+    output.innerHTML = "<p>Geolocalização inserida com sucesso! Favor completar o cadastro da ocorrência abaixo:</p>";
+
+    navigator.geolocation.getCurrentPosition(success, error);}
+
+</script>
+
+
+    <div id="out"></div>
+
+    <body onload="geoFindMe()"> </body>
+
+
+    <form method="post">
+
+    <div class="form-group">
+        <p></p>
+
+    <input type="hidden" input name = "geo" type = "text" id = "geo" value="{{ request.form.get('geo') }}">
+    <p></p>
+
+    <p></p>
+
     <label for="Tipo contato">Qual foi seu contato com o hospedeiro?</label>
     <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
         <option></option>
