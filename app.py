@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-import psycopg2
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 from datetime import timedelta
@@ -9,25 +8,19 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
 #Configuração de conexão PostgreSQL
-engine = create_engine("postgresql://admin:123@localhost:5432/PIUNIVESP2022")
+engine = create_engine("postgresql://dsqjkoqh:0WVRx1QdymKwyAEbvm1q2Ffba3THKU5f@kesavan.db.elephantsql.com/dsqjkoqh")
 db = scoped_session(sessionmaker(bind=engine))
 app.secret_key = '12345678'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 
-def get_db_connection():
-    conn = psycopg2.connect(host='localhost',
-                            database='PIUNIVESP2022',
-                            user='admin',
-                            password='123')
-    return conn
 
 #Função para encontrar ID de postagens individuais
 def get_post(post_id):
     conn = get_db_connection()
     with conn:
         with conn.cursor() as curs:
-            curs.execute('SELECT * FROM "PIUNIVESP2022.public.posts" WHERE post_id = id').fetchone()
+            curs.execute('SELECT * FROM "dsqjkoqh.public.posts" WHERE post_id = id').fetchone()
     conn.close()
     if post is None:
         abort(404)
@@ -37,14 +30,14 @@ def get_post(post_id):
 #Página inicial
 @app.route('/')
 def index():
-    exibe = db.execute('SELECT * FROM retornos').fetchall()
+    exibe = db.execute('SELECT * FROM dsqjkoqh.public.retornos').fetchall()
     return render_template('index.html', Res=exibe)
 
 
 #Página tipos de contato
 @app.route('/db')
 def tipo():
-    exibe = db.execute('SELECT * FROM tipos').fetchall()
+    exibe = db.execute('SELECT * FROM dsqjkoqh.public.tipos').fetchall()
     return render_template('db.html', tipos=exibe)
 
 
