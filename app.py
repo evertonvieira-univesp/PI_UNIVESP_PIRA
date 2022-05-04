@@ -7,6 +7,7 @@ from datetime import timedelta
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
+
 #Configuração de conexão PostgreSQL
 engine = create_engine("postgresql://dsqjkoqh:0WVRx1QdymKwyAEbvm1q2Ffba3THKU5f@kesavan.db.elephantsql.com/dsqjkoqh")
 db = scoped_session(sessionmaker(bind=engine))
