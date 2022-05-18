@@ -45,3 +45,13 @@ table {font-family: Calibri, Calibri; border-collapse: separate;
         width: 80% ;  border-radius: 10px; padding: 10px; alignment: center ; align-content: center; align-items: center;
         background-color: rgba(187, 236, 230, 0,2); align-self: center; text-align-all: center; -webkit-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3);
         box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3) }
+
+a.navbar-brand {
+    padding: 5px 8px 5px 8px;
+    margin-right: 12px;
+    border-right-style: solid
+}
+
+a.nav-link {
+    border-right-style: solid;
+}
