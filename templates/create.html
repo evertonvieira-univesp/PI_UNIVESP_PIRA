@@ -1,301 +1,304 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h4>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h4>
+    <section class="container">
+        <h1 class="nome-hidden">{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h1>
+        <h2 class="nome-paginas">Registre sua Ocorrência</h2>
 
-<script>
-    function geoFindMe() {
-    var output = document.getElementById("out");
+        <script>
+            function geoFindMe() {
+            var output = document.getElementById("out");
 
-    if (!navigator.geolocation){
-        output.innerHTML = "<p>Geolocalização não aceita pelo browser</p>";
-        return;
-    }
+            if (!navigator.geolocation){
+                output.innerHTML = "<p>Geolocalização não aceita pelo browser</p>";
+                return;
+            }
 
-     function success(position) {
-         var loc  = position.coords.latitude + ',' + position.coords.longitude;
-    document.getElementById("geo").value =  loc ;
-    }
-    function error() {
-        output.innerHTML = "Não foi possível carregar a localização.";
-    }
+             function success(position) {
+                 var loc  = position.coords.latitude + ',' + position.coords.longitude;
+            document.getElementById("geo").value =  loc ;
+            }
+            function error() {
+                output.innerHTML = "Não foi possível carregar a localização.";
+            }
 
-    output.innerHTML = "<p>Geolocalização inserida com sucesso! Favor completar o cadastro da ocorrência abaixo:</p>";
+            output.innerHTML = "<p>Geolocalização inserida com sucesso! Favor completar o cadastro da ocorrência abaixo:</p>";
 
-    navigator.geolocation.getCurrentPosition(success, error);}
-
-</script>
-
-
-    <div id="out"></div>
-
-    <body onload="geoFindMe()"> </body>
+            navigator.geolocation.getCurrentPosition(success, error);}
+        </script>
 
 
-    <form method="post">
+        <div id="out"></div>
 
-    <div class="form-group">
-        <p></p>
-
-    <input type="hidden" input name = "geo" type = "text" id = "geo" value="{{ request.form.get('geo') }}">
-    <p></p>
-
-    <p></p>
-
-    <label for="Tipo contato">Qual foi seu contato com o hospedeiro?</label>
-    <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
-        <option></option>
-      <option>Somente observação visual</option>
-      <option>Carrapato hospedado em animais</option>
-      <option>Carrapato hospedado em humanos</option>
-     </select>
-  </div>
+        <body onload="geoFindMe()"> </body>
 
 
-    <div class="form-group">
-    <label for="Bairro">Selecione o bairro</label>
-    <select name="bairro" class="form-control" value="{{ request.form.get('bairro') }}">
-        <option></option>
-<option>Água Branca</option>
-<option>Água Santa</option>
-<option>Água Seca</option>
-<option>Alemães</option>
-<option>Alto</option>
-<option>Alto da Pompeia</option>
-<option>Anhumas</option>
-<option>Área Rural de Piracicaba</option>
-<option>Barro Branco</option>
-<option>Bongue</option>
-<option>Bosque dos Lenheiros</option>
-<option>Campestre</option>
-<option>Capim Fino</option>
-<option>Castelinho</option>
-<option>Ceasa</option>
-<option>Cecap</option>
-<option>Centro</option>
-<option>Centro Artemis</option>
-<option>Centro C Área Taquaral</option>
-<option>Centro Tupi</option>
-<option>Chácara Esperia</option>
-<option>Chácara São Jorge</option>
-<option>Chácara Universitária</option>
-<option>Chico</option>
-<option>Chs Água Branca</option>
-<option>Cidade Jardim</option>
-<option>Colinas do Piracicaba</option>
-<option>Colinas Piracicaba Artemis</option>
-<option>Conceição</option>
-<option>Conjunto Habitacional Água Branca</option>
-<option>Conjunto Residencial Mário Dedini</option>
-<option>Distrito Industrial</option>
-<option>Distrito Industrial Uninorte</option>
-<option>Distrito Uninorte</option>
-<option>Dois Córregos</option>
-<option>Estância Lago Azul</option>
-<option>Estância Lago Azul Artemis</option>
-<option>Garças</option>
-<option>Gleba Califórnia</option>
-<option>Glebas Califórnia</option>
-<option>Glebas Natalinas</option>
-<option>Godinhos Itapiru</option>
-<option>Grande Parque Residencial</option>
-<option>Guamium</option>
-<option>Higienópolis</option>
-<option>Irmãos Camolesi</option>
-<option>Itaperu</option>
-<option>Jaraguá</option>
-<option>Jardim Abaeté</option>
-<option>Jardim Água Viva</option>
-<option>Jardim Algodoal</option>
-<option>Jardim Alvorada</option>
-<option>Jardim Aman</option>
-<option>Jardim Astúrias I</option>
-<option>Jardim Astúrias II</option>
-<option>Jardim Bartira</option>
-<option>Jardim Bartira Tupi</option>
-<option>Jardim Boa Esperança</option>
-<option>Jardim Borghesi</option>
-<option>Jardim Brasília</option>
-<option>Jardim Califórnia</option>
-<option>Jardim Camargo</option>
-<option>Jardim Castor</option>
-<option>Jardim Caxambu</option>
-<option>Jardim Conceição</option>
-<option>Jardim Diamante</option>
-<option>Jardim Dona Luisa</option>
-<option>Jardim dos Anturios</option>
-<option>Jardim dos Manacás</option>
-<option>Jardim Elite</option>
-<option>Jardim Esplanada</option>
-<option>Jardim Estoril</option>
-<option>Jardim Europa</option>
-<option>Jardim Flamboyant</option>
-<option>Jardim Glória</option>
-<option>Jardim Glória II</option>
-<option>Jardim Ibirapuera</option>
-<option>Jardim Ipanema</option>
-<option>Jardim Irapuã</option>
-<option>Jardim Itaicaba</option>
-<option>Jardim Itaicaba Artemis</option>
-<option>Jardim Itamaracá</option>
-<option>Jardim Itamaraty</option>
-<option>Jardim Itapuã</option>
-<option>Jardim Maria</option>
-<option>Jardim Maria Cláudia</option>
-<option>Jardim Maria Helena</option>
-<option>Jardim Matilde II</option>
-<option>Jardim Modelo</option>
-<option>Jardim Monumento</option>
-<option>Jardim Noiva da Colina</option>
-<option>Jardim Nova Iguaçu</option>
-<option>Jardim Nova República</option>
-<option>Jardim Nova Suíça</option>
-<option>Jardim Oriente</option>
-<option>Jardim Pacaembu</option>
-<option>Jardim Parque Jupiá</option>
-<option>Jardim Paulista</option>
-<option>Jardim Petrópolis</option>
-<option>Jardim Planalto</option>
-<option>Jardim Primavera</option>
-<option>Jardim Residencial Itabera</option>
-<option>Jardim Residencial Javary I</option>
-<option>Jardim Residencial Javary II</option>
-<option>Jardim Residencial Javary III</option>
-<option>Jardim Santa Ignes I</option>
-<option>Jardim Santa Ignes II</option>
-<option>Jardim Santa Isabel</option>
-<option>Jardim Santa Rosa</option>
-<option>Jardim Santa Sílvia</option>
-<option>Jardim São Francisco</option>
-<option>Jardim São Jorge</option>
-<option>Jardim São José</option>
-<option>Jardim São Luiz</option>
-<option>Jardim São Paulo</option>
-<option>Jardim Sol Nascente</option>
-<option>Jardim Sol Nascente II</option>
-<option>Jardim Sônia</option>
-<option>Jardim Taiguara</option>
-<option>Jardim Taiguara I</option>
-<option>Jardim Tatuapé</option>
-<option>Jardim Três Marias</option>
-<option>Jupiá</option>
-<option>Loteamento Chs Nazareth II</option>
-<option>Loteamento Cobayt Líbano</option>
-<option>Loteamento Distrito Industrial Uninorte</option>
-<option>Loteamento Humberto Venturini</option>
-<option>Loteamento Ipanema</option>
-<option>Loteamento Jardim Colina Verde</option>
-<option>Loteamento Jardim Santa Maria</option>
-<option>Loteamento Kobayat Líbano</option>
-<option>Loteamento Residencial E Comer</option>
-<option>Loteamento Residencial Santo Antônio II</option>
-<option>Loteamento Santa Rosa</option>
-<option>Loteamento São Francisco</option>
-<option>Loteamento Vem Viver Piracicaba I</option>
-<option>Mário Dedini</option>
-<option>Matão</option>
-<option>Monte Alegre</option>
-<option>Monte Líbano</option>
-<option>Morumbi</option>
-<option>Nho Nho Químico</option>
-<option>Nho Químico</option>
-<option>Nossa Senhora de Fátima</option>
-<option>Nova América</option>
-<option>Nova Piracicaba</option>
-<option>Nova Pompeia</option>
-<option>Nova Suíça</option>
-<option>Novo Horizonte</option>
-<option>Ondas</option>
-<option>Parque Água Branca</option>
-<option>Parque Bela Vista</option>
-<option>Parque Chapadão</option>
-<option>Parque Conceição</option>
-<option>Parque Conceição II</option>
-<option>Parque dos Sabiás</option>
-<option>Parque Nossa Senhora das Graças</option>
-<option>Parque Orlanda I</option>
-<option>Parque Orlanda II</option>
-<option>Parque Orlanda III</option>
-<option>Parque Peoria</option>
-<option>Parque Peoria Tupi</option>
-<option>Parque Primeiro de Maio</option>
-<option>Parque Residencial Agrimensor Taquaral</option>
-<option>Parque Residencial Monte Rey</option>
-<option>Parque Residencial Monte Rey II</option>
-<option>Parque Residencial Monte Rey III</option>
-<option>Parque Residencial Piracicaba</option>
-<option>Parque Residencial Piracicaba Balbo</option>
-<option>Parque Santa Cecília</option>
-<option>Parque São Jorge</option>
-<option>Parque São Matheus</option>
-<option>Parque Taquaral</option>
-<option>Pau D'alhinho</option>
-<option>Pau Queimado</option>
-<option>Pauliceia</option>
-<option>Paulista</option>
-<option>Perdizes</option>
-<option>Piracicaba - Conchas</option>
-<option>Piracicamirim</option>
-<option>Pompeia</option>
-<option>Prezoto</option>
-<option>Prx Unimaq</option>
-<option>Residencial Altos do Piracicaba</option>
-<option>Residencial Andorinhas</option>
-<option>Residencial Bela Vista</option>
-<option>Residencial Bertolucci</option>
-<option>Residencial Itaporanga</option>
-<option>Residencial Mont Carlo</option>
-<option>Residencial Nova Água Branca II</option>
-<option>Residencial Paineiras</option>
-<option>Residencial Portal Água Branca</option>
-<option>Residencial Portal da Água Branca</option>
-<option>Residencial Santo Antônio</option>
-<option>Residencial Serra Verde</option>
-<option>Residencial Terras Artemis Artemis</option>
-<option>Reta</option>
-<option>Rural</option>
-<option>Santa Olímpia</option>
-<option>Santa Rita</option>
-<option>Santa Rosa</option>
-<option>Santa Rosa Ipês</option>
-<option>Santa Terezinha</option>
-<option>Santana</option>
-<option>São Dimas</option>
-<option>São Judas</option>
-<option>São Luiz</option>
-<option>Serrote</option>
-<option>Sertãozinho</option>
-<option>Tanquinho</option>
-<option>Tanquinho Guamium</option>
-<option>Taquaral</option>
-<option>Terra Nova</option>
-<option>Terras de Piracicaba</option>
-<option>Terras do Engenho</option>
-<option>Unileste</option>
-<option>Vale do Sol</option>
-<option>Verde</option>
-<option>Vila Areião</option>
-<option>Vila Belém</option>
-<option>Vila Bessy</option>
-<option>Vila Cristina</option>
-<option>Vila Fátima</option>
-<option>Vila Independência</option>
-<option>Vila Industrial</option>
-<option>Vila Monteiro</option>
-<option>Vila Nossa Senhora Aparecida</option>
-<option>Vila Pacaembu</option>
-<option>Vila Rezende</option>
-<option>Vila Sônia</option>
-<option>Vivendas Bela Vista</option>
-<option>Volta Grande</option>
-    </select>
-  </div>
+        <form method="post">
+
+            <div class="form-group">
+                    <p></p>
+
+                <input type="hidden" input name = "geo" type = "text" id = "geo" value="{{ request.form.get('geo') }}">
+                <p></p>
+
+                <p></p>
+
+                <label for="Tipo contato">Qual foi seu contato com o hospedeiro?</label>
+                <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
+                    <option></option>
+                  <option>Somente observação visual</option>
+                  <option>Carrapato hospedado em animais</option>
+                  <option>Carrapato hospedado em humanos</option>
+                 </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Bairro">Selecione o bairro</label>
+                <select name="bairro" class="form-control" value="{{ request.form.get('bairro') }}">
+                    <option></option>
+                    <option>Água Branca</option>
+                    <option>Água Santa</option>
+                    <option>Água Seca</option>
+                    <option>Alemães</option>
+                    <option>Alto</option>
+                    <option>Alto da Pompeia</option>
+                    <option>Anhumas</option>
+                    <option>Área Rural de Piracicaba</option>
+                    <option>Barro Branco</option>
+                    <option>Bongue</option>
+                    <option>Bosque dos Lenheiros</option>
+                    <option>Campestre</option>
+                    <option>Capim Fino</option>
+                    <option>Castelinho</option>
+                    <option>Ceasa</option>
+                    <option>Cecap</option>
+                    <option>Centro</option>
+                    <option>Centro Artemis</option>
+                    <option>Centro C Área Taquaral</option>
+                    <option>Centro Tupi</option>
+                    <option>Chácara Esperia</option>
+                    <option>Chácara São Jorge</option>
+                    <option>Chácara Universitária</option>
+                    <option>Chico</option>
+                    <option>Chs Água Branca</option>
+                    <option>Cidade Jardim</option>
+                    <option>Colinas do Piracicaba</option>
+                    <option>Colinas Piracicaba Artemis</option>
+                    <option>Conceição</option>
+                    <option>Conjunto Habitacional Água Branca</option>
+                    <option>Conjunto Residencial Mário Dedini</option>
+                    <option>Distrito Industrial</option>
+                    <option>Distrito Industrial Uninorte</option>
+                    <option>Distrito Uninorte</option>
+                    <option>Dois Córregos</option>
+                    <option>Estância Lago Azul</option>
+                    <option>Estância Lago Azul Artemis</option>
+                    <option>Garças</option>
+                    <option>Gleba Califórnia</option>
+                    <option>Glebas Califórnia</option>
+                    <option>Glebas Natalinas</option>
+                    <option>Godinhos Itapiru</option>
+                    <option>Grande Parque Residencial</option>
+                    <option>Guamium</option>
+                    <option>Higienópolis</option>
+                    <option>Irmãos Camolesi</option>
+                    <option>Itaperu</option>
+                    <option>Jaraguá</option>
+                    <option>Jardim Abaeté</option>
+                    <option>Jardim Água Viva</option>
+                    <option>Jardim Algodoal</option>
+                    <option>Jardim Alvorada</option>
+                    <option>Jardim Aman</option>
+                    <option>Jardim Astúrias I</option>
+                    <option>Jardim Astúrias II</option>
+                    <option>Jardim Bartira</option>
+                    <option>Jardim Bartira Tupi</option>
+                    <option>Jardim Boa Esperança</option>
+                    <option>Jardim Borghesi</option>
+                    <option>Jardim Brasília</option>
+                    <option>Jardim Califórnia</option>
+                    <option>Jardim Camargo</option>
+                    <option>Jardim Castor</option>
+                    <option>Jardim Caxambu</option>
+                    <option>Jardim Conceição</option>
+                    <option>Jardim Diamante</option>
+                    <option>Jardim Dona Luisa</option>
+                    <option>Jardim dos Anturios</option>
+                    <option>Jardim dos Manacás</option>
+                    <option>Jardim Elite</option>
+                    <option>Jardim Esplanada</option>
+                    <option>Jardim Estoril</option>
+                    <option>Jardim Europa</option>
+                    <option>Jardim Flamboyant</option>
+                    <option>Jardim Glória</option>
+                    <option>Jardim Glória II</option>
+                    <option>Jardim Ibirapuera</option>
+                    <option>Jardim Ipanema</option>
+                    <option>Jardim Irapuã</option>
+                    <option>Jardim Itaicaba</option>
+                    <option>Jardim Itaicaba Artemis</option>
+                    <option>Jardim Itamaracá</option>
+                    <option>Jardim Itamaraty</option>
+                    <option>Jardim Itapuã</option>
+                    <option>Jardim Maria</option>
+                    <option>Jardim Maria Cláudia</option>
+                    <option>Jardim Maria Helena</option>
+                    <option>Jardim Matilde II</option>
+                    <option>Jardim Modelo</option>
+                    <option>Jardim Monumento</option>
+                    <option>Jardim Noiva da Colina</option>
+                    <option>Jardim Nova Iguaçu</option>
+                    <option>Jardim Nova República</option>
+                    <option>Jardim Nova Suíça</option>
+                    <option>Jardim Oriente</option>
+                    <option>Jardim Pacaembu</option>
+                    <option>Jardim Parque Jupiá</option>
+                    <option>Jardim Paulista</option>
+                    <option>Jardim Petrópolis</option>
+                    <option>Jardim Planalto</option>
+                    <option>Jardim Primavera</option>
+                    <option>Jardim Residencial Itabera</option>
+                    <option>Jardim Residencial Javary I</option>
+                    <option>Jardim Residencial Javary II</option>
+                    <option>Jardim Residencial Javary III</option>
+                    <option>Jardim Santa Ignes I</option>
+                    <option>Jardim Santa Ignes II</option>
+                    <option>Jardim Santa Isabel</option>
+                    <option>Jardim Santa Rosa</option>
+                    <option>Jardim Santa Sílvia</option>
+                    <option>Jardim São Francisco</option>
+                    <option>Jardim São Jorge</option>
+                    <option>Jardim São José</option>
+                    <option>Jardim São Luiz</option>
+                    <option>Jardim São Paulo</option>
+                    <option>Jardim Sol Nascente</option>
+                    <option>Jardim Sol Nascente II</option>
+                    <option>Jardim Sônia</option>
+                    <option>Jardim Taiguara</option>
+                    <option>Jardim Taiguara I</option>
+                    <option>Jardim Tatuapé</option>
+                    <option>Jardim Três Marias</option>
+                    <option>Jupiá</option>
+                    <option>Loteamento Chs Nazareth II</option>
+                    <option>Loteamento Cobayt Líbano</option>
+                    <option>Loteamento Distrito Industrial Uninorte</option>
+                    <option>Loteamento Humberto Venturini</option>
+                    <option>Loteamento Ipanema</option>
+                    <option>Loteamento Jardim Colina Verde</option>
+                    <option>Loteamento Jardim Santa Maria</option>
+                    <option>Loteamento Kobayat Líbano</option>
+                    <option>Loteamento Residencial E Comer</option>
+                    <option>Loteamento Residencial Santo Antônio II</option>
+                    <option>Loteamento Santa Rosa</option>
+                    <option>Loteamento São Francisco</option>
+                    <option>Loteamento Vem Viver Piracicaba I</option>
+                    <option>Mário Dedini</option>
+                    <option>Matão</option>
+                    <option>Monte Alegre</option>
+                    <option>Monte Líbano</option>
+                    <option>Morumbi</option>
+                    <option>Nho Nho Químico</option>
+                    <option>Nho Químico</option>
+                    <option>Nossa Senhora de Fátima</option>
+                    <option>Nova América</option>
+                    <option>Nova Piracicaba</option>
+                    <option>Nova Pompeia</option>
+                    <option>Nova Suíça</option>
+                    <option>Novo Horizonte</option>
+                    <option>Ondas</option>
+                    <option>Parque Água Branca</option>
+                    <option>Parque Bela Vista</option>
+                    <option>Parque Chapadão</option>
+                    <option>Parque Conceição</option>
+                    <option>Parque Conceição II</option>
+                    <option>Parque dos Sabiás</option>
+                    <option>Parque Nossa Senhora das Graças</option>
+                    <option>Parque Orlanda I</option>
+                    <option>Parque Orlanda II</option>
+                    <option>Parque Orlanda III</option>
+                    <option>Parque Peoria</option>
+                    <option>Parque Peoria Tupi</option>
+                    <option>Parque Primeiro de Maio</option>
+                    <option>Parque Residencial Agrimensor Taquaral</option>
+                    <option>Parque Residencial Monte Rey</option>
+                    <option>Parque Residencial Monte Rey II</option>
+                    <option>Parque Residencial Monte Rey III</option>
+                    <option>Parque Residencial Piracicaba</option>
+                    <option>Parque Residencial Piracicaba Balbo</option>
+                    <option>Parque Santa Cecília</option>
+                    <option>Parque São Jorge</option>
+                    <option>Parque São Matheus</option>
+                    <option>Parque Taquaral</option>
+                    <option>Pau D'alhinho</option>
+                    <option>Pau Queimado</option>
+                    <option>Pauliceia</option>
+                    <option>Paulista</option>
+                    <option>Perdizes</option>
+                    <option>Piracicaba - Conchas</option>
+                    <option>Piracicamirim</option>
+                    <option>Pompeia</option>
+                    <option>Prezoto</option>
+                    <option>Prx Unimaq</option>
+                    <option>Residencial Altos do Piracicaba</option>
+                    <option>Residencial Andorinhas</option>
+                    <option>Residencial Bela Vista</option>
+                    <option>Residencial Bertolucci</option>
+                    <option>Residencial Itaporanga</option>
+                    <option>Residencial Mont Carlo</option>
+                    <option>Residencial Nova Água Branca II</option>
+                    <option>Residencial Paineiras</option>
+                    <option>Residencial Portal Água Branca</option>
+                    <option>Residencial Portal da Água Branca</option>
+                    <option>Residencial Santo Antônio</option>
+                    <option>Residencial Serra Verde</option>
+                    <option>Residencial Terras Artemis Artemis</option>
+                    <option>Reta</option>
+                    <option>Rural</option>
+                    <option>Santa Olímpia</option>
+                    <option>Santa Rita</option>
+                    <option>Santa Rosa</option>
+                    <option>Santa Rosa Ipês</option>
+                    <option>Santa Terezinha</option>
+                    <option>Santana</option>
+                    <option>São Dimas</option>
+                    <option>São Judas</option>
+                    <option>São Luiz</option>
+                    <option>Serrote</option>
+                    <option>Sertãozinho</option>
+                    <option>Tanquinho</option>
+                    <option>Tanquinho Guamium</option>
+                    <option>Taquaral</option>
+                    <option>Terra Nova</option>
+                    <option>Terras de Piracicaba</option>
+                    <option>Terras do Engenho</option>
+                    <option>Unileste</option>
+                    <option>Vale do Sol</option>
+                    <option>Verde</option>
+                    <option>Vila Areião</option>
+                    <option>Vila Belém</option>
+                    <option>Vila Bessy</option>
+                    <option>Vila Cristina</option>
+                    <option>Vila Fátima</option>
+                    <option>Vila Independência</option>
+                    <option>Vila Industrial</option>
+                    <option>Vila Monteiro</option>
+                    <option>Vila Nossa Senhora Aparecida</option>
+                    <option>Vila Pacaembu</option>
+                    <option>Vila Rezende</option>
+                    <option>Vila Sônia</option>
+                    <option>Vivendas Bela Vista</option>
+                    <option>Volta Grande</option>
+                </select>
+            </div>
 
 
 
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </div>
-</form>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </section>
+
 {% endblock %}
