@@ -1,100 +1,102 @@
 {% extends 'base.html' %}
 
 {% block content %}
-       <h5>{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h5>
+    <section>
+            <div id="banner">
+                <h1 class="nome-hidden">{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021{% endblock %}</h1>
+                <p1 class="font-size-13">PIRACICABA - SP</p1>
+                <img src="../static/css/images/Carrapato-img.svg" alt="Carrapato" class="center">
 
-<p3>Este projeto foi desenvolvido para realizar um levantamento da ocorrência de contatos com carrapatos na
-    cidade de Piracicaba-SP. A ferramenta estará disponível para participação entre os meses de Novembro e Dezembro de 2021.</p3>
+                <p2 class="font-size-13">CONTATO COM CARRAPATO?<small>REGISTRE SUA OCORRÊNCIA!</small></p2>
+            </div>
+    </section>
+    <section class="container" id="corpo-inicio">
+        <p3>Este projeto foi desenvolvido para realizar um levantamento da ocorrência de contatos com carrapatos na
+            cidade de Piracicaba-SP. A ferramenta estará disponível para participação entre os meses de Novembro e Dezembro de 2021.</p3>
+        <br>
+        <br>
+        <p3>Para informar um contato ou acessar um resumo dos tipos de contatos informados selecione um link abaixo:</p3>
+        <br>
+        <br>
+        <div class="table-btn">
+            <div class="row-btn">
+                <a href="/create" class="btn btn-primary btn-lg active cell-btn"  role=/create.html aria-pressed="true">Registre sua ocorrência</a>
+                <a href="/db" class="btn btn-primary btn-lg active cell-btn"  role=/create.html aria-pressed="true">Resumo por tipo de contato</a>
+                <a href="/ftr" class="btn btn-primary btn-lg active cell-btn"  role=/create.html aria-pressed="true">Filtro de ocorrências</a>
+            </div>
+        </div>
+        <div>
+            <div id="map"></div>
 
-<p> </p>
-<p> </p>
+            <script>
+                var map = L.map('map').setView([-22.72530680770728, -47.64942216337267], 11.5);
 
-<p3>Para informar um contato ou acessar um resumo dos tipos de contatos informados selecione um link abaixo:</p3>
-<p> </p>
-<p> </p>
-<a href="/create" class="btn btn-primary btn-lg active"  role=/create.html aria-pressed="true">Registre sua ocorrência</a>
-<a href="/db" class="btn btn-primary btn-lg active"  role=/create.html aria-pressed="true">Resumo por tipo de contato</a>
-<a href="/ftr" class="btn btn-primary btn-lg active"  role=/create.html aria-pressed="true">Filtro de ocorrências</a>
-
-
-
-
-
-<p>Abaixo são exibidos os dados de relatos de ocorrências de carrapatos ordenados por bairros:</p>
-
-
-    <body>
-
-    <div id="map"></div>
-
-<script>
-    var map = L.map('map').setView([-22.72530680770728, -47.64942216337267], 11.5);
-
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    minZoom: 11.5,
-    maxZoom: 16,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoicG9uY2VnaCIsImEiOiJjbDJvMWhncm4wMW04M2NtajdscHlib285In0.UfM2xByqa_5RqYcTEVcOhQ'
-}).addTo(map);
-
-
-    var marker = L.marker([-22.725, -47.649]).addTo(map);
-        marker.bindPopup("Carrapato em humanos <br>12/04/2022 11:57h");
-
-    var popup = L.popup();
-
-    function onMapClick(e) {
-      popup
-        .setLatLng(e.latlng)
-        .setContent("Deseja adicionar uma ocorrência?")
-
-        .openOn(map);
-        }
-
-        map.on('click', onMapClick);
-
-  L.control.locate().addTo(map);
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                minZoom: 11.5,
+                maxZoom: 16,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoicG9uY2VnaCIsImEiOiJjbDJvMWhncm4wMW04M2NtajdscHlib285In0.UfM2xByqa_5RqYcTEVcOhQ'
+                }).addTo(map);
 
 
-</script>
-    </body>
+                var marker = L.marker([-22.725, -47.649]).addTo(map);
+                    marker.bindPopup("Carrapato em humanos <br>12/04/2022 11:57h");
 
-<p></p>
-<div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Filtro por data
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Últimos 30 dias</a>
-    <a class="dropdown-item" href="#">Últimos 6 meses</a>
-    <a class="dropdown-item" href="#">Últimos 12 meses</a>
-    <div class="dropdown-divider"></div>
+                var popup = L.popup();
 
-  </div>
-</div>
+                function onMapClick(e) {
+                  popup
+                    .setLatLng(e.latlng)
+                    .setContent("Deseja adicionar uma ocorrência?")
 
-<p> </p>
+                    .openOn(map);
+                    }
 
-   <table class="table table-striped">
-  <tr>
-        <th scope="col">Bairros</th>
-        <th scope="col">Total de ocorrências</th>
+                    map.on('click', onMapClick);
 
-    </tr>
-  </thead>
-	{% for res in Res %}
-	<tr>
-	<td>{{res.bairros}}
-	</td>
-	<td>{{res.ocorrências}}
-	</td>
+                L.control.locate().addTo(map);
 
-	{% endfor %}
-</table>
+            </script>
+        </div>
+        <br>
+        <p3>Abaixo são exibidos os dados de relatos de ocorrências de carrapatos ordenados por bairros:</p3>
+        <p></p>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filtro por data
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Últimos 30 dias</a>
+            <a class="dropdown-item" href="#">Últimos 6 meses</a>
+            <a class="dropdown-item" href="#">Últimos 12 meses</a>
+            <div class="dropdown-divider"></div>
 
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <table class="table table-striped">
+          <tr>
+                <th scope="col">Bairros</th>
+                <th scope="col">Total de ocorrências</th>
+
+            </tr>
+          </thead>
+            {% for res in Res %}
+            <tr>
+            <td>{{res.bairros}}
+            </td>
+            <td>{{res.ocorrências}}
+            </td>
+
+            {% endfor %}
+        </table>
+    </section>
 {% endblock %}
 
 

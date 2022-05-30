@@ -1,9 +1,40 @@
-body{
-    background-image: url('C:/Users/eviei/Desktop/GIT_Exemplo/flask_blog_PI_UNIVESP/img/fundocontador.jpg');
-}
+.font-size-6 { font-size: calc(6px + 0.6vw) }
+.font-size-7 { font-size: calc(7px + 0.7vw) }
+.font-size-8 { font-size: calc(8px + 0.8vw) }
+.font-size-9 { font-size: calc(9px + 0.9vw) }
+.font-size-10 { font-size: calc(10px + 1vw) }
+.font-size-11 { font-size: calc(11px + 1.1vw) }
+.font-size-12 { font-size: calc(12px + 1.2vw) }
+.font-size-13 { font-size: calc(13px + 1.3vw) }
+.font-size-14 { font-size: calc(14px + 1.4vw) }
+.font-size-15 { font-size: calc(15px + 1.5vw) }
+.font-size-16 { font-size: calc(16px + 1.6vw) }
+.font-size-17 { font-size: calc(17px + 1.7vw) }
+.font-size-18 { font-size: calc(18px + 1.8vw) }
+.font-size-19 { font-size: calc(19px + 1.9vw) }
+.font-size-20 { font-size: calc(20px + 2vw) }
+.font-size-21 { font-size: calc(21px + 2.1vw) }
+.font-size-22 { font-size: calc(22px + 2.2vw) }
+.font-size-23 { font-size: calc(23px + 2.3vw) }
+.font-size-24 { font-size: calc(24px + 2.4vw) }
+.font-size-25 { font-size: calc(25px + 2.5vw) }
+.font-size-26 { font-size: calc(26px + 2.6vw) }
+.font-size-27 { font-size: calc(27px + 2.7vw) }
+.font-size-28 { font-size: calc(28px + 2.8vw) }
+.font-size-29 { font-size: calc(29px + 2.9vw) }
+.font-size-30 { font-size: calc(30px + 3vw) }
 
-#map { height: 400px; width: 600px; padding: 100px;-webkit-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3);
-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3); margin: 50px }
+#map {
+    height: 550px;
+    padding: 100px;
+    -webkit-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3);
+    margin: 23px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto%;
+}
 
 p {
   margin: 0;
@@ -21,10 +52,8 @@ p.caldeirao + p.caldeirao::before {
 
 
 h1 {
-    border: 2px #2c439f solid;
-    color: #2d7abd;
-    text-align: center;
-    padding: 10px;
+    border: 0;
+    padding: 0;
 }
 
 p3 {
@@ -46,6 +75,75 @@ table {font-family: Calibri, Calibri; border-collapse: separate;
         background-color: rgba(187, 236, 230, 0,2); align-self: center; text-align-all: center; -webkit-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3);
         box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.3) }
 
+#banner {
+    margin: 0;
+    width: 100%;
+    height: calc(110vh - 62px);
+    position: relative;
+    top: -80px;
+    background: url("./images/Piracicaba-img.svg") no-repeat;
+    background-repeat: no-repeat;
+    background-position: top center;
+    text-align:center;
+}
+
+.center {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(59vh - 21px);
+}
+
+.nome-hidden {
+    visibility: hidden;
+}
+
+.nome-paginas {
+    text-align: center;
+    position: relative;
+    top: -35px;
+}
+
+#banner p1 {
+    border: 0;
+    padding: 7px;
+    margin: 0;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    background-color: #004aad;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    top: 50px;
+    }
+
+#banner p2 {
+    padding: 12px;
+    font-weight: bold;
+    color: white;
+    top: 770px;
+    position: sticky;
+    display: block;
+    text-align: center;
+    text-shadow: -6px 6px 5px black;
+}
+
+#banner p2 small {
+    padding: 12px;
+    font-weight: bold;
+    color: white;
+    top: -10px;
+    position: relative;
+    display: block;
+    text-shadow: -6px 6px 5px black;
+}
+
+.navbar {
+    z-index: 5;
+}
+
 a.navbar-brand {
     padding: 5px 8px 5px 8px;
     margin-right: 12px;
@@ -54,4 +152,27 @@ a.navbar-brand {
 
 a.nav-link {
     border-right-style: solid;
+}
+
+#corpo-inicio {
+    position: relative;
+    top: -50px;
+}
+
+.table-btn {
+    display:table;
+    border-collapse:separate;
+    border-spacing:5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row-btn {
+    display:table-row;
+}
+
+a.cell-btn {
+    display:table-cell;
+    padding:5px;
+    border:5px solid black;
 }
