@@ -9,19 +9,19 @@ app.config['SECRET_KEY'] = '12345678'
 
 
 #Configuração de conexão PostgreSQL
-engine = create_engine("postgresql://dsqjkoqh:0WVRx1QdymKwyAEbvm1q2Ffba3THKU5f@kesavan.db.elephantsql.com/dsqjkoqh")
+engine = create_engine("postgresql://postgres:postgres@piunivesp2022-grupo27.civ5yivkbmj0.us-east-1.rds.amazonaws.com:5432/postgres")
 db = scoped_session(sessionmaker(bind=engine))
 app.secret_key = '12345678'
-app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 
 
 #Função para encontrar ID de postagens individuais
 def get_post(post_id):
-    conn = get_db_connection()
+    conn = db.execute()
     with conn:
         with conn.cursor() as curs:
-            curs.execute('SELECT * FROM "dsqjkoqh.public.posts" WHERE post_id = id').fetchone()
+            curs.execute('SELECT * FROM postgres.public.posts WHERE post_id = id').fetchone()
     conn.close()
     if post is None:
         abort(404)
@@ -31,14 +31,15 @@ def get_post(post_id):
 #Página inicial
 @app.route('/')
 def index():
-    exibe = db.execute('SELECT * FROM dsqjkoqh.public.retornos').fetchall()
+    exibe = db.execute('SELECT * FROM postgres.public.retornos').fetchall()
+    db.close()
     return render_template('index.html', Res=exibe)
 
 
 #Página tipos de contato
 @app.route('/db')
 def tipo():
-    exibe = db.execute('SELECT * FROM dsqjkoqh.public.tipos').fetchall()
+    exibe = db.execute('SELECT * FROM postgres.public.tipos').fetchall()
     return render_template('db.html', tipos=exibe)
 
 
@@ -70,7 +71,6 @@ def create():
         geo = request.form.get('geo')
         db.execute("INSERT INTO posts (contato, bairro,geo) VALUES (:contato, :bairro, :geo)" , {"contato": contato, "bairro": bairro, "geo": geo})
         db.commit()
-
         return redirect(url_for('index'))
     return render_template('create.html')
 
