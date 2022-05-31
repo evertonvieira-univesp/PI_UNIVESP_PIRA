@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-from datetime import timedelta
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
