@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section>
-            <div id="banner">
-                <h1 class="nome-hidden">{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021{% endblock %}</h1>
-                <p1 class="font-size-13">PIRACICABA - SP</p1>
-                <img src="../static/css/images/Carrapato-img.svg" alt="Carrapato" class="center">
+    <!section>
+            <!div id="banner">
+                <!h1 class="nome-hidden">{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021{% endblock %}<!/h1>
+                <!p1 class="font-size-13">PIRACICABA - SP<!/p1>
+                <!img src="../static/css/images/Carrapato-img.svg" alt="Carrapato" class="center">
 
-                <p2 class="font-size-13">CONTATO COM CARRAPATO?<small>REGISTRE SUA OCORRÊNCIA!</small></p2>
-            </div>
-    </section>
+                <!p2 class="font-size-13">CONTATO COM CARRAPATO?<small>REGISTRE SUA OCORRÊNCIA!</small><!/p2>
+            <!/div> >
+    <!/section>
     <section class="container" id="corpo-inicio">
-        <p3>Este projeto foi desenvolvido para realizar um levantamento da ocorrência de contatos com carrapatos na
-            cidade de Piracicaba-SP. A ferramenta estará disponível para participação entre os meses de Novembro e Dezembro de 2021.</p3>
+        <p1>Este projeto foi desenvolvido para realizar um levantamento da ocorrência de contatos com carrapatos na
+            cidade de Piracicaba-SP. A ferramenta estará disponível para participação entre os meses de Junho e Julho de 2022.</p1>
         <br>
         <br>
         <p3>Para informar um contato ou acessar um resumo dos tipos de contatos informados selecione um link abaixo:</p3>
@@ -42,8 +42,7 @@
                 }).addTo(map);
 
 
-                var marker = L.marker([-22.725, -47.649]).addTo(map);
-                    marker.bindPopup("Carrapato em humanos <br>12/04/2022 11:57h");
+                var marker = L.marker(-22.72, -47.64)]).addTo(map);
 
                 var popup = L.popup();
 

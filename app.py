@@ -1,17 +1,19 @@
+import json
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-
+import geojson
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
 
 #Configuração de conexão PostgreSQL
-engine = create_engine("postgresql://postgres:postgres@piunivesp2022-grupo27.civ5yivkbmj0.us-east-1.rds.amazonaws.com:5432/postgres")
+engine = create_engine("postgresql://postgres:123456789@univesp.coptxedavsy1.sa-east-1.rds.amazonaws.com:5432/grupo27")
 db = scoped_session(sessionmaker(bind=engine))
-app.secret_key = '12345678'
+app.secret_key = '123456789'
 app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 
@@ -21,17 +23,22 @@ def get_post(post_id):
     conn = db.execute()
     with conn:
         with conn.cursor() as curs:
-            curs.execute('SELECT * FROM postgres.public.posts WHERE post_id = id').fetchone()
+            curs.execute('SELECT * FROM grupo27.public.posts WHERE post_id = id').fetchone()
     conn.close()
     if post is None:
         abort(404)
     return post
 
+@app.route('/teste')
+def get_geo():
+    geo = db.execute('SELECT row_to_json(row(geo, contato, dt)) FROM grupo27.public.geo').fetchall()
+    db.close()
+    return json
 
 #Página inicial
 @app.route('/')
 def index():
-    exibe = db.execute('SELECT * FROM postgres.public.retornos').fetchall()
+    exibe = db.execute('SELECT * FROM grupo27.public.retornos').fetchall()
     db.close()
     return render_template('index.html', Res=exibe)
 
@@ -39,7 +46,7 @@ def index():
 #Página tipos de contato
 @app.route('/db')
 def tipo():
-    exibe = db.execute('SELECT * FROM postgres.public.tipos').fetchall()
+    exibe = db.execute('SELECT * FROM grupo27.public.tipos').fetchall()
     return render_template('db.html', tipos=exibe)
 
 
@@ -74,3 +81,4 @@ def create():
         return redirect(url_for('index'))
     return render_template('create.html')
 
+#geojson
