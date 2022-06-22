@@ -1,17 +1,15 @@
-import json
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-import geojson
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
 
 #Configuração de conexão PostgreSQL
-engine = create_engine("postgresql://postgres:123456789@univesp.coptxedavsy1.sa-east-1.rds.amazonaws.com:5432/grupo27")
+engine = create_engine("postgresql://postgres:123456789@univesp.coptxedavsy1.sa-east-1.rds.amazonaws.com:5432/postgres")
+#engine = create_engine("postgresql://postgres:postgres@localhost:5432/postgres")
 db = scoped_session(sessionmaker(bind=engine))
 app.secret_key = '123456789'
 app.config["SESSION_PERMANENT"] = True
@@ -39,8 +37,9 @@ def get_geo():
 @app.route('/')
 def index():
     exibe = db.execute('SELECT * FROM grupo27.public.retornos').fetchall()
+    geo = db.execute('select json_build_array(geo_lat::numeric,geo_long::numeric,id) from posts_geo').fetchall()
     db.close()
-    return render_template('index.html', Res=exibe)
+    return render_template('index.html', Res=exibe, Geo_pontos=geo)
 
 
 #Página tipos de contato
