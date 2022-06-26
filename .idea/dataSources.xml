@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="heroku" uuid="0275f821-e35d-493e-b859-da89a5ad7ac3">
+    <data-source source="LOCAL" name="d99ce040bt6uck@ec2-52-22-136-117.compute-1.amazonaws.com" uuid="bd0a4c80-fdf4-442c-a7b9-33cb41d40458">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
