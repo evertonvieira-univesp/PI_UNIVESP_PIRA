@@ -18,7 +18,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 #Página inicial
 @app.route('/')
 def index():
-    geo = db.execute('select json_build_array(geo_lat::numeric,geo_long::numeric,id,contato) from posts_geo').fetchall()
+    geo = db.execute('select json_build_array(geo_lat::numeric,geo_long::numeric,id,contato,data) from posts_geo').fetchall()
     db.close()
     return render_template('index.html', Geo_pontos=geo)
 
@@ -41,7 +41,8 @@ def create():
     if request.method == 'POST':
         contato = request.form.get('contato')
         geo = request.form.get('geo')
-        db.execute("INSERT INTO posts (contato,geo) VALUES (:contato, :geo)" , {"contato": contato, "geo": geo})
+        data = request.form.get('data')
+        db.execute("INSERT INTO posts (contato,geo,data) VALUES (:contato, :geo, :data)" , {"contato": contato, "geo": geo, "data": data})
         db.commit()
         return redirect(url_for('index'))
     return render_template('create.html')
