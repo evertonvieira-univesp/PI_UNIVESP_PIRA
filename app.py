@@ -23,7 +23,7 @@ def index():
     return render_template('index.html', Geo_pontos=geo)
 
 
-#Página de informação do grupo
+#Página de informação do grupo#
 @app.route('/sobre')
 def sobreNos():
     return render_template('sobre.html')
