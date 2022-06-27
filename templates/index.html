@@ -52,8 +52,9 @@
                     linha_geo = linha_geo.split(", ")
                     linha_geo = Array.from(linha_geo)
                     var title = linha_geo[2];
-                    var marker = L.marker(new L.LatLng(linha_geo[0], linha_geo[1]), { title: title });
-                    marker.bindPopup(title);
+                    tipo = linha_geo[3];
+                    var marker = L.marker(new L.LatLng(linha_geo[0], linha_geo[1]), { tipo: tipo });
+                    marker.bindPopup(tipo);
                     markers.addLayer(marker);
                 }
 

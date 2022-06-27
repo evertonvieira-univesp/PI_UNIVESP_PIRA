@@ -18,7 +18,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 #Página inicial
 @app.route('/')
 def index():
-    geo = db.execute('select json_build_array(geo_lat::numeric,geo_long::numeric,id) from posts_geo').fetchall()
+    geo = db.execute('select json_build_array(geo_lat::numeric,geo_long::numeric,id,contato) from posts_geo').fetchall()
     db.close()
     return render_template('index.html', Geo_pontos=geo)
 
