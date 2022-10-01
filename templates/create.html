@@ -8,12 +8,10 @@
         <script>
             function geoFindMe() {
             var output = document.getElementById("out");
-
             if (!navigator.geolocation){
                 output.innerHTML = "<p>Geolocalização não aceita pelo browser</p>";
                 return;
             }
-
              function success(position) {
                  var loc  = position.coords.latitude + ',' + position.coords.longitude;
             document.getElementById("geo").value =  loc ;
@@ -21,10 +19,11 @@
             function error() {
                 output.innerHTML = "Não foi possível carregar a localização.";
             }
-
             output.innerHTML = "<p>Geolocalização inserida com sucesso! Favor completar o cadastro da ocorrência abaixo:</p>";
-
             navigator.geolocation.getCurrentPosition(success, error);}
+
+
+
         </script>
 
 
@@ -37,12 +36,9 @@
 
             <div class="form-group">
                     <p></p>
-
                 <input type="hidden" input name = "geo" type = "text" id = "geo" value="{{ request.form.get('geo') }}">
                 <p></p>
-
                 <p></p>
-
                 <label for="Tipo contato">Qual o tipo de contato?</label>
                 <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
                     <option></option>
@@ -50,14 +46,16 @@
                   <option>Carrapato hospedado em animais</option>
                   <option>Carrapato hospedado em humanos</option>
                  </select>
-            </div>
 
+            </div>
 
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
+
         </form>
+
     </section>
 
 {% endblock %}

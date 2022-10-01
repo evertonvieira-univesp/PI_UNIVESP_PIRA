@@ -42,8 +42,11 @@ def create():
         contato = request.form.get('contato')
         geo = request.form.get('geo')
         data = request.form.get('data')
-        db.execute("INSERT INTO posts (contato,geo) VALUES (:contato, :geo)" , {"contato": contato, "geo": geo})
-        db.commit()
-        return redirect(url_for('index'))
+        if contato == '' or geo =='None':
+            return render_template('create.html')
+        else:
+            db.execute("INSERT INTO posts (contato,geo) VALUES (:contato, :geo)" , {"contato": contato, "geo": geo})
+            db.commit()
+            return redirect(url_for('index'))
     return render_template('create.html')
 
