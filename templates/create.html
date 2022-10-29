@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="container">
-        <h1 class="nome-hidden">{% block title %} Projeto Integrador UNIVESP 2º Semestre 2021  {% endblock %}</h1>
+        <h1 class="nome-hidden">{% block title %} Projeto Integrador UNIVESP 2º Semestre 2022  {% endblock %}</h1>
         <h2 class="nome-paginas">Registre sua Ocorrência</h2>
 
         <script>
@@ -17,19 +17,23 @@
             document.getElementById("geo").value =  loc ;
             }
             function error() {
-                output.innerHTML = "Não foi possível carregar a localização.";
+                output.innerHTML = "<p10> <strong> Não foi possível carregar a localização. </strong></p10> ";
             }
             output.innerHTML = "<p>Geolocalização inserida com sucesso! Favor completar o cadastro da ocorrência abaixo:</p>";
             navigator.geolocation.getCurrentPosition(success, error);}
 
 
-
         </script>
-
 
         <div id="out"></div>
 
-        <body onload="geoFindMe()"> </body>
+        <body onload="geoFindMe()">
+
+         {% if erro %}
+             <p10 class=erro> <strong>{{ erro }}</strong>  </p10>
+         {% endif %}
+
+        </body>
 
 
         <form method="post">
@@ -39,12 +43,16 @@
                 <input type="hidden" input name = "geo" type = "text" id = "geo" value="{{ request.form.get('geo') }}">
                 <p></p>
                 <p></p>
-                <label for="Tipo contato">Qual o tipo de contato?</label>
+                <label for="Tipo contato">Indique qual o local onde foi encontrado as larvas?</label>
                 <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
                     <option></option>
-                  <option>Somente observação visual</option>
-                  <option>Carrapato hospedado em animais</option>
-                  <option>Carrapato hospedado em humanos</option>
+                  <option>Água parada em entulhos</option>
+                  <option>Água acumulada em vasos</option>
+                  <option>No interior de caixas d´ água</option>
+                  <option>Em ralos</option>
+                  <option>Lajes ou Marquises</option>
+                  <option>Bandejas de ar condicionado</option>
+                  <option>Espelho d´água</option>
                  </select>
 
             </div>
