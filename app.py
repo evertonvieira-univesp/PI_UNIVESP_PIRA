@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
 #Configuração de conexão PostgreSQL
-engine = create_engine("postgresql://qyaidplwokxgaf:59be526e18d66accd0441832ab9add1fa1c56fdcf4b586ee14a26bb0f30ddaca@ec2-52-22-136-117.compute-1.amazonaws.com:5432/d99ce040bt6uck")
+engine = create_engine("postgres://gnggejexlutedp:f3417af94cbd82be2a689b33e4104c5466509659ccf1dbf359ca59164594fba6@ec2-54-160-200-167.compute-1.amazonaws.com:5432/dc24uh2ha4lenk")
 db = scoped_session(sessionmaker(bind=engine))
 app.secret_key = '123456789'
 app.config["SESSION_PERMANENT"] = True
