@@ -22,8 +22,19 @@
             output.innerHTML = "<p>Geolocalização inserida com sucesso! Favor completar o cadastro da ocorrência abaixo:</p>";
             navigator.geolocation.getCurrentPosition(success, error);}
 
+            function alerta() {
+                if (document.getElementById("cont").value == "")
+                {
+                    console.log("Condicional if")
+                    alert("Por favor selecione um tipo de postagem.");
+                }
 
-        </script>
+                else {
+                    return (document.getElementById("post").click());
+
+                }
+            }
+     </script>
 
         <div id="out"></div>
 
@@ -44,7 +55,8 @@
                 <p></p>
                 <p></p>
                 <label for="Tipo contato">Indique qual o local onde foi encontrado as larvas?</label>
-                <select name="contato" class="form-control" value="{{ request.form.get('contato') }}">
+
+                <select name="contato" id="cont" class="form-control" value="{{ request.form.get('contato') }}">
                     <option></option>
                   <option>Água parada em entulhos</option>
                   <option>Água acumulada em vasos</option>
@@ -59,7 +71,8 @@
 
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button onclick=alerta() type="button" id="btn" class="btn btn-primary">Enviar</button>
+                <button type="submit" id="post" class="btn btn-primary" hidden=></button>
             </div>
 
         </form>
