@@ -60,14 +60,13 @@
 
                     var marker = L.marker(new L.LatLng(linha_geo[0], linha_geo[1]), { tipo: tipo }, {data: data});
                     heat.push([linha_geo[0],linha_geo[1]]); 
-                    console.log(heat);
                     marker.bindPopup(tipo.slice(5,-2) + ''+ data.slice(4,-2));
                     markers.addLayer(marker);
                 }
                 map.addLayer(markers);
 
 
-                var mapheat = L.heatLayer(heat,{radius:25}).addTo(map);
+                var mapheat = L.heatLayer(heat,{radius:25});
 
                 var popup = L.popup();
 
@@ -84,8 +83,12 @@
                     }
 
                     map.on('click', onMapClick);
+                var layersMaps = {
+                    'Intensidade de infestação': mapheat,
+                    'Número de denúncias': markers
+                }
 
-                L.control.locate().addTo(map);
+                L.control.layers(layersMaps).addTo(map);
 
             </script>
         </div>
