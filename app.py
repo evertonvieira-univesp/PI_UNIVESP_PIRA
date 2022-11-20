@@ -2,7 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-
+import pandas as pd
+import numpy as np
+import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
@@ -54,4 +56,10 @@ def create():
             return redirect(url_for('index'))
     return render_template('create.html',erro=erro)
 
-
+#Report page
+@app.route('/report')
+def report():
+    getData = db.execute('select geo_lat, geo_long, contato, data from posts_geo').fetchall()
+    getData = [{'Latitude':col1, 'Longitude': col2, 'Descrição': col3, 'Data': col4} for (col1, col2, col3, col4) in getData]
+    getData = pd.DataFrame(getData)
+    return render_template('report.html', table=getData.to_html(index=False, classes="table table-striped table-bordered ", table_id="sortTable"), titles='Relatório dos pontos submetidos:')

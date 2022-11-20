@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+.dataTables_wrapper {
+        width: 80%;
+        margin: auto;
+}
+h3 {
+    padding-left: 140px;
+    padding-top: 30px;
+}
+
+
+</style>
+
+        <h3>{{ titles }}</h3>
+        <br>
+        {{ table|safe }}
+
+<script>
+window.addEventListener("DOMContentLoaded", function(){
+    $('#sortTable').DataTable();
+});
+</script>
+
+{% endblock %}
+
+
+
+
