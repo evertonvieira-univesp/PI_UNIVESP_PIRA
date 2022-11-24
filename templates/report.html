@@ -11,20 +11,62 @@ h3 {
     padding-left: 140px;
     padding-top: 30px;
 }
-
+.div-canvas {
+    margin: auto;
+    padding: 10px;
+    width: 400px;
+    height: 400px;
+}
 
 </style>
 
-        <h3>{{ titles }}</h3>
-        <br>
-        {{ table|safe }}
-
+    <h3>{{ titles }}</h3>
+    <br>
+    {{ table|safe }}
+    <br>
+    <div class="div-canvas">
+    <canvas id="myChart" width="400px" height="300px"></canvas>
+    </div>
 <script>
 window.addEventListener("DOMContentLoaded", function(){
     $('#sortTable').DataTable();
+
+var chartDataValue= {{chartDataValue|safe}};
+var chartDataValuePerc= {{chartDataValuePerc|safe}};
+console.log(chartDataValuePerc);
+var chartDataDesc = {{chartDataDesc|safe}};
+
+console.log(chartDataDesc);
+
+ const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    data: {
+      labels: chartDataDesc,
+      datasets: [{
+        type: 'bar',
+        label: 'Número de registros',
+        data: chartDataValue,
+        borderWidth: 1
+      },{
+        type: 'line',
+        label: '% de registro',
+        data: chartDataValuePerc,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: {
+            title: {
+                display: true,
+                align: 'center',
+                text: 'Distribuição das ocorrências de Dengue'
+            }
+    },
+    },
+  });
 });
 </script>
-
 {% endblock %}
 
 

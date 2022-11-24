@@ -61,5 +61,12 @@ def create():
 def report():
     getData = db.execute('select geo_lat, geo_long, contato, data from posts_geo').fetchall()
     getData = [{'Latitude':col1, 'Longitude': col2, 'Descrição': col3, 'Data': col4} for (col1, col2, col3, col4) in getData]
-    getData = pd.DataFrame(getData)
-    return render_template('report.html', table=getData.to_html(index=False, classes="table table-striped table-bordered ", table_id="sortTable"), titles='Relatório dos pontos submetidos:')
+    getData = pd.DataFrame(getData);
+    chartData = getData['Descrição'];
+    chartData = chartData.value_counts();
+    chartDataValue = chartData.values.tolist();
+    chartDataValuePerc = (chartData.values/chartData.values.sum())*100;
+    chartDataValuePerc = chartDataValuePerc.round(1);
+    chartDataValuePerc = chartDataValuePerc.tolist();
+    chartDataDesc = chartData.index.tolist();
+    return render_template('report.html', table=getData.to_html(index=False, classes="table table-striped table-bordered ", table_id="sortTable" ), chartDataValue=chartDataValue, chartDataValuePerc=chartDataValuePerc, chartDataDesc=chartDataDesc, titles='Relatório dos pontos submetidos:')
