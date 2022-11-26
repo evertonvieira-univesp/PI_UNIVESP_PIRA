@@ -2,41 +2,52 @@
 
 
 {% block content %}
+
 <style>
-.dataTables_wrapper {
-        width: 80%;
-        margin: auto;
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
 }
+
+
+.div-table {
+    padding-top: 50px;
+}
+
+
+.div-canvas {
+    padding-top: 10px;
+}
+
 h3 {
     padding-left: 140px;
     padding-top: 30px;
 }
-.div-canvas {
-    margin: auto;
-    padding: 10px;
-    width: 400px;
-    height: 400px;
-}
 
 </style>
 
-    <h3>{{ titles }}</h3>
-    <br>
-    {{ table|safe }}
-    <br>
-    <div class="div-canvas">
-    <canvas id="myChart" width="400px" height="300px"></canvas>
+        <h3>{{ titles }}</h3>
+        <br>
+    <div class="container">
+        <div class="div-canvas">
+            <canvas id="myChart" ></canvas>
+        </div>
+        <br>
+        <div class="div-table">
+            {{ table|safe }}
+        </div>
     </div>
+
 <script>
+
 window.addEventListener("DOMContentLoaded", function(){
     $('#sortTable').DataTable();
 
 var chartDataValue= {{chartDataValue|safe}};
 var chartDataValuePerc= {{chartDataValuePerc|safe}};
-console.log(chartDataValuePerc);
 var chartDataDesc = {{chartDataDesc|safe}};
 
-console.log(chartDataDesc);
 
  const ctx = document.getElementById('myChart');
 
