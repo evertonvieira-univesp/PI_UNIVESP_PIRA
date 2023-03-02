@@ -15,5 +15,12 @@
       <jdbc-url>jdbc:postgresql://ec2-54-160-200-167.compute-1.amazonaws.com:5432/dc24uh2ha4lenk</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="d3ah9qt87mn2l1@ec2-54-174-15-122.compute-1.amazonaws.com" uuid="a3dd104e-78bc-4df1-9392-5855aa3748b5">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-174-15-122.compute-1.amazonaws.com:5432/d3ah9qt87mn2l1</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
