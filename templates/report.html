@@ -2,29 +2,82 @@
 
 
 {% block content %}
+
 <style>
-.dataTables_wrapper {
-        width: 80%;
-        margin: auto;
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
 }
+
+
+.div-table {
+    padding-top: 50px;
+}
+
+
+.div-canvas {
+    padding-top: 10px;
+}
+
 h3 {
     padding-left: 140px;
     padding-top: 30px;
 }
 
-
 </style>
 
         <h3>{{ titles }}</h3>
         <br>
-        {{ table|safe }}
+    <div class="container">
+        <div class="div-canvas">
+            <canvas id="myChart" ></canvas>
+        </div>
+        <br>
+        <div class="div-table">
+            {{ table|safe }}
+        </div>
+    </div>
 
 <script>
+
 window.addEventListener("DOMContentLoaded", function(){
     $('#sortTable').DataTable();
+
+var chartDataValue= {{chartDataValue|safe}};
+var chartDataValuePerc= {{chartDataValuePerc|safe}};
+var chartDataDesc = {{chartDataDesc|safe}};
+
+
+ const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    data: {
+      labels: chartDataDesc,
+      datasets: [{
+        type: 'bar',
+        label: 'Número de registros',
+        data: chartDataValue,
+        borderWidth: 1
+      },{
+        type: 'line',
+        label: '% de registro',
+        data: chartDataValuePerc,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: {
+            title: {
+                display: true,
+                align: 'center',
+                text: 'Distribuição das ocorrências de Dengue'
+            }
+    },
+    },
+  });
 });
 </script>
-
 {% endblock %}
 
 
